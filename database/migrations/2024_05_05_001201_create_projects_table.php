@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
-            $table->longText('paragraph')->nullable();
-            $table->string('Address');
             $table->string('image_path');
+            $table->string("logo_path");
             $table ->foreignId('created_by')->constrained('users');
             $table ->foreignId('updated_by')->constrained('users');
             $table->timestamps();

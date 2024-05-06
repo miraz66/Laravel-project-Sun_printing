@@ -17,7 +17,15 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->sentence(),
+            'description' => fake()->realText(),
+            'paragraph' => fake()->realText(),
+            'image_path' => fake()->imageUrl(),
+            'address' => fake()->address(),
+            'created_by' => 1,
+            'updated_by' => 1,
+            'created_at' => time(),
+            'updated_at' => time(),
         ];
     }
 }

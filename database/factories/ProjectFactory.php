@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,18 +16,16 @@ class ProjectFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-{
-    return [
-        'name' => fake()->sentence(),
-        'description' => fake()->realText(),
-        'paragraph' => fake()->realText(),
-        'image_path' => fake()->imageUrl(),
-        'Address' => fake()->address(), 
-        'created_by' => 1,
-        'updated_by' => 1,
-        'created_at' => now(),
-        'updated_at' => now(),
-    ];
-}
-
+    {
+        return [
+            'name' => fake()->sentence(),
+            'description' => fake()->realText(),
+            'image_path' => fake()->imageUrl(),
+            'logo_path' => fake()->imageUrl(),
+            'created_by' => 1,
+            'updated_by' => 1,
+            'created_at' => time(),
+            'updated_at' => time(),
+        ];
+    }
 }
