@@ -19,7 +19,7 @@ class TaskFactory extends Factory
         return [
             'name' => fake()->sentence(),
             'description' => fake()->realText(),
-            'paragraph' => fake()->realText(),
+            'paragraph' => fake()-> sentence(),
             'image_path' => fake()->imageUrl(),
             'address' => fake()->address(),
             'assigned_user_id' => 1,
