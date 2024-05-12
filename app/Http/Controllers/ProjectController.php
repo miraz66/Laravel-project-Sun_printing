@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\ProjectResource;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
-use App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -13,7 +15,27 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $query = Project::query();
+        $sortField = request('sort_field', 'created_at');
+        $sortDirection = request('sort_direction', 'desc');
+
+        if (request('name')) {
+            $query->where('name', 'like', '%' . request('name') . '%');
+        }
+
+        if (request('status')) {
+            $query->where('status', request('status'));
+        }
+
+        $projects = $query->orderBy($sortField, $sortDirection)
+            ->paginate(10)
+            ->onEachSide(1);
+
+        return inertia('Projects/Index', [
+            'projects' => ProjectResource::collection($projects),
+            'queryParams' => request()->query() ?: null,
+            "success" => session("success")
+        ]);
     }
 
     /**
@@ -21,7 +43,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Projects/Create');
     }
 
     /**
@@ -29,7 +51,19 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('project_images', 'public'); // Store in the 'public' disk
+            $data['image_path'] = $imagePath; // Add image path to the data array
+        }
+
+        $data["created_by"] = Auth::id();
+        $data["updated_by"] = Auth::id();
+
+        Project::create($data);
+        return to_route('project.index')
+            ->with("success", "Project created successfully");
     }
 
     /**
