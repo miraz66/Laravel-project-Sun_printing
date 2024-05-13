@@ -1,8 +1,5 @@
 import { Head, Link } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { TASK_STATUS_TEXT_MAP, TASK_STATUS_CLASS_MAP } from "@/constants";
-import clsx from "clsx";
-// import TaskTable from "../Tasks/TaskTable";
 
 export default function Show({ auth, task }) {
     return (
@@ -10,11 +7,11 @@ export default function Show({ auth, task }) {
             <Head title={`Task ${task.name}`} />
 
             <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-4">
+                <div className="max-w-4xl mx-auto sm:px-6 lg:px-4">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-400 bg-gray-800">
                             <img
-                                className="w-full h-96"
+                                className="w-full h-96 object-cover"
                                 src={task.image_path}
                                 alt="fake image"
                             />
@@ -31,21 +28,6 @@ export default function Show({ auth, task }) {
                                             Task Name
                                         </label>
                                         <p>{task.name}</p>
-                                    </div>
-                                    <div>
-                                        <label className="text-lg font-bold">
-                                            Task Status{"  "}
-                                        </label>
-                                        <span
-                                            className={clsx(
-                                                "px-3 p-1 text-white rounded-sm",
-                                                TASK_STATUS_CLASS_MAP[
-                                                    task.status
-                                                ]
-                                            )}
-                                        >
-                                            {TASK_STATUS_TEXT_MAP[task.status]}
-                                        </span>
                                     </div>
                                     <div>
                                         <label className="text-lg font-bold">
@@ -104,6 +86,12 @@ export default function Show({ auth, task }) {
                                     Task description
                                 </label>
                                 <p>{task.description}</p>
+                            </div>
+                            <div className="mt-10 space-y-2">
+                                <label className="text-lg font-bold">
+                                    Task Paragraph
+                                </label>
+                                <p>{task.paragraph}</p>
                             </div>
                         </div>
                     </div>
