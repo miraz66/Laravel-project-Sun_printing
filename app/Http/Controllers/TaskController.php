@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Http\Resources\TaskResource;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Resources\ProjectResource;
 use App\Http\Requests\UpdateTaskRequest;
@@ -57,7 +58,18 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('task_images', 'public'); // Store in the 'public' disk
+            $data['image_path'] = $imagePath; // Add image path to the data array
+        }
+
+        $data['created_by'] = Auth::id();
+        $data['updated_by'] = Auth::id();
+
+        Task::create($data);
+        return to_route('task.index')->with('success', 'Task created successfully');
     }
 
     /**
@@ -65,7 +77,9 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return inertia('Tasks/Show', [
+            'task' => new TaskResource($task),  
+        ]);
     }
 
     /**

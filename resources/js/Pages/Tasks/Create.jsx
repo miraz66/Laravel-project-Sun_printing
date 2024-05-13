@@ -81,142 +81,6 @@ export default function Create({ auth, projects, users }) {
                                     />
                                 </div>
 
-                                {/*  Create a new task from image */}
-                                <div>
-                                    <InputLabel
-                                        className="text-white text-lg font-medium"
-                                        htmlFor="task_image_path"
-                                        value="Task Image"
-                                    />
-
-                                    <TextInput
-                                        id="task_image_path"
-                                        name="image"
-                                        type="file"
-                                        className="mt-1 py-1.5 px-2 block w-full bg-gray-400 border-black"
-                                        onChange={(e) =>
-                                            setData("image", e.target.files[0])
-                                        }
-                                    />
-                                    <InputError
-                                        message={errors.image}
-                                        className="mt-2"
-                                    />
-                                </div>
-
-                                {/* Create a new Task from Name */}
-                                <div>
-                                    <InputLabel
-                                        htmlFor="name"
-                                        value="Task Name"
-                                    />
-
-                                    <TextInput
-                                        id="name"
-                                        name="Name"
-                                        type="text"
-                                        placeholder="Task Name"
-                                        value={data.name}
-                                        className="mt-1 block w-full text-gray-900"
-                                        autoComplete="name"
-                                        onChange={(e) =>
-                                            setData("name", e.target.value)
-                                        }
-                                    />
-                                    <InputError
-                                        message={errors.name}
-                                        className="mt-2"
-                                    />
-                                </div>
-
-                                {/* Create a new Task from Due Date */}
-                                <div>
-                                    <InputLabel
-                                        htmlFor="due_date"
-                                        value="Task Due Date"
-                                    />
-
-                                    <TextInput
-                                        id="due_date"
-                                        name="due_date"
-                                        type="date"
-                                        placeholder="Task Due Date"
-                                        value={data.due_date}
-                                        className="mt-1 block text-gray-900 w-full "
-                                        onChange={(e) =>
-                                            setData("due_date", e.target.value)
-                                        }
-                                    />
-                                    <InputError
-                                        message={errors.due_date}
-                                        className="mt-2"
-                                    />
-                                </div>
-
-                                {/* Create a new Task from Status */}
-                                <div>
-                                    <InputLabel
-                                        htmlFor="status"
-                                        value="Task Status"
-                                    />
-
-                                    <SelectInput
-                                        id="status"
-                                        name="status"
-                                        type="text"
-                                        placeholder="Task Status"
-                                        value={data.status}
-                                        className="mt-1 block w-full py-2"
-                                        onChange={(e) =>
-                                            setData("status", e.target.value)
-                                        }
-                                    >
-                                        <option value="">Select Status</option>
-                                        <option value="pending">Pending</option>
-                                        <option value="in_progress">
-                                            In Progress
-                                        </option>
-                                        <option value="completed">
-                                            Completed
-                                        </option>
-                                    </SelectInput>
-                                    <InputError
-                                        message={errors.status}
-                                        className="mt-2"
-                                    />
-                                </div>
-
-                                {/* Create a new Task from Priority */}
-                                <div>
-                                    <InputLabel
-                                        htmlFor="priority"
-                                        value="Task Priority"
-                                    />
-
-                                    <SelectInput
-                                        id="priority"
-                                        name="priority"
-                                        type="text"
-                                        placeholder="Task priority"
-                                        value={data.priority}
-                                        className="mt-1 block w-full py-2"
-                                        onChange={(e) =>
-                                            setData("priority", e.target.value)
-                                        }
-                                    >
-                                        <option value="">
-                                            Select Priority
-                                        </option>
-                                        <option value="low">Low</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="high">High</option>
-                                    </SelectInput>
-                                    <InputError
-                                        message={errors.priority}
-                                        className="mt-2"
-                                    />
-                                </div>
-
                                 {/* Create a new Task from Assigned User */}
                                 <div>
                                     <InputLabel
@@ -253,6 +117,79 @@ export default function Create({ auth, projects, users }) {
                                     />
                                 </div>
 
+                                {/* Create a new Task from Name */}
+                                <div>
+                                    <InputLabel
+                                        htmlFor="name"
+                                        value="Task Name"
+                                    />
+
+                                    <TextInput
+                                        id="name"
+                                        name="Name"
+                                        type="text"
+                                        placeholder="Task Name"
+                                        value={data.name}
+                                        className="mt-1 block w-full text-gray-900"
+                                        autoComplete="name"
+                                        onChange={(e) =>
+                                            setData("name", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        message={errors.name}
+                                        className="mt-2"
+                                    />
+                                </div>
+
+                                {/*  Create a new task from image */}
+                                <div>
+                                    <InputLabel
+                                        className="text-white text-lg font-medium"
+                                        htmlFor="task_image_path"
+                                        value="Task Image"
+                                    />
+
+                                    <TextInput
+                                        id="task_image_path"
+                                        name="image"
+                                        type="file"
+                                        className="mt-1 py-1.5 px-2 block w-full bg-gray-400 border-black"
+                                        onChange={(e) =>
+                                            setData("image", e.target.files[0])
+                                        }
+                                    />
+                                    <InputError
+                                        message={errors.image}
+                                        className="mt-2"
+                                    />
+                                </div>
+
+                                {/* Create a new Task from Address */}
+                                <div>
+                                    <InputLabel
+                                        htmlFor="address"
+                                        value="Task address"
+                                    />
+
+                                    <TextInput
+                                        id="address"
+                                        name="address"
+                                        type="text"
+                                        placeholder="Task Address"
+                                        value={data.address}
+                                        className="mt-1 block w-full text-gray-900"
+                                        autoComplete="address"
+                                        onChange={(e) =>
+                                            setData("address", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        message={errors.address}
+                                        className="mt-2"
+                                    />
+                                </div>
+
                                 {/* Create a new Task from Description */}
                                 <div>
                                     <InputLabel
@@ -264,7 +201,7 @@ export default function Create({ auth, projects, users }) {
                                         id="description"
                                         name="description"
                                         type="text"
-                                        rows="06"
+                                        rows="04"
                                         placeholder="Task Description"
                                         isFocused="true"
                                         value={data.description}
@@ -278,6 +215,32 @@ export default function Create({ auth, projects, users }) {
                                     />
                                     <InputError
                                         message={errors.description}
+                                        className="mt-2"
+                                    />
+                                </div>
+
+                                {/* Create a new Task from Paragraph */}
+                                <div>
+                                    <InputLabel
+                                        htmlFor="paragraph"
+                                        value="Task paragraph"
+                                    />
+
+                                    <TextAreaInput
+                                        id="paragraph"
+                                        name="paragraph"
+                                        type="text"
+                                        rows="04"
+                                        placeholder="Task paragraph"
+                                        isFocused="true"
+                                        value={data.paragraph}
+                                        className="mt-1 block w-full text-gray-900"
+                                        onChange={(e) =>
+                                            setData("paragraph", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        message={errors.paragraph}
                                         className="mt-2"
                                     />
                                 </div>
