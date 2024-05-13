@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
+use App\Models\User;
+use App\Models\Project;
+use App\Http\Resources\TaskResource;
+use App\Http\Resources\UserResource;
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Resources\ProjectResource;
+use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
@@ -13,7 +18,24 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $query = Task::query();
+        $sortField = request('sort_field', 'created_at');
+        $sortDirection = request('sort_direction', 'desc');
+
+        if (request('name')) {
+            $query->where('name', 'like', '%' . request('name') . '%');
+        }
+
+        if (request('status')) {
+            $query->where('status', request('status'));
+        }
+
+        $tasks = $query->orderBy($sortField, $sortDirection)->paginate(10)->onEachSide(1);
+
+        return inertia('Tasks/Index', [
+            'tasks' => TaskResource::collection($tasks),
+            'queryParams' => request()->query() ?: null,
+        ]);
     }
 
     /**
@@ -21,7 +43,13 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::query()->orderBy('name', 'asc')->get()->all();
+        $users = User::query()->orderBy('name', 'asc')->get()->all();
+
+        return inertia('Tasks/Create', [
+            'projects' => ProjectResource::collection($projects),
+            'users' => UserResource::collection($users),
+        ]);
     }
 
     /**

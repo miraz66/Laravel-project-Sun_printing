@@ -23,8 +23,8 @@ export default function index({ auth, tasks, queryParams }) {
             <Head title="Tasks" />
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-4">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-600">
+                    <div className="dark:bg-gray-300 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="px-2 pt-2 pb-6 text-gray-600">
                             <TaskTable
                                 tasks={tasks}
                                 queryParams={queryParams}

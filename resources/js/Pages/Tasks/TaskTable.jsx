@@ -95,16 +95,6 @@ export default function TaskTable({
                             >
                                 created Date
                             </TableHeading>
-
-                            <TableHeading
-                                name={"due_date"}
-                                sortable={true}
-                                sort_field={queryParams.sort_field}
-                                sort_direction={queryParams.sort_direction}
-                                sortChanged={sortChange}
-                            >
-                                due Date
-                            </TableHeading>
                             <TableHeading name={"created_by"} sortable={false}>
                                 created By
                             </TableHeading>
@@ -134,7 +124,6 @@ export default function TaskTable({
                                     onKeyPress={(e) => onKeyPress("name", e)}
                                 />
                             </th>
-                            <th className="px-3 py-4"></th>
                             <th className="px-3 py-4"></th>
                             <th className="px-3 py-4"></th>
                             <th className="px-3 py-4"></th>
@@ -172,8 +161,6 @@ export default function TaskTable({
                                 )}
 
                                 <td className="px-3 py-2">{task.created_at}</td>
-
-                                <td className="px-3 py-2">{task.due_date}</td>
 
                                 <td className="px-3 py-2">
                                     {task.updated_by.name}
