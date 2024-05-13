@@ -102,6 +102,12 @@ export default function index({ auth, projects, queryParams = null, success }) {
                                                 name={"image"}
                                                 sortable={false}
                                             >
+                                                Logo
+                                            </TableHeading>
+                                            <TableHeading
+                                                name={"image"}
+                                                sortable={false}
+                                            >
                                                 image
                                             </TableHeading>
                                             <TableHeading
@@ -172,6 +178,7 @@ export default function index({ auth, projects, queryParams = null, success }) {
                                             <th className="px-3 py-4"></th>
                                             <th className="px-3 py-4"></th>
                                             <th className="px-3 py-4"></th>
+                                            <th className="px-3 py-4"></th>
                                         </tr>
                                     </thead>
 
@@ -187,9 +194,17 @@ export default function index({ auth, projects, queryParams = null, success }) {
                                                 <td className="px-3 py-2">
                                                     <img
                                                         className="rounded"
+                                                        src={project.logo_path}
+                                                        alt="Project image"
+                                                        style={{ width: 60 }}
+                                                    />
+                                                </td>
+                                                <td className="px-3 py-2">
+                                                    <img
+                                                        className="rounded"
                                                         src={project.image_path}
                                                         alt="Project image"
-                                                        style={{ width: 120 }}
+                                                        style={{ width: 150 }}
                                                     />
                                                 </td>
                                                 <td className="px-3 py-2 hover:underline hover:text-gray-300 ease-in-out duration-200">

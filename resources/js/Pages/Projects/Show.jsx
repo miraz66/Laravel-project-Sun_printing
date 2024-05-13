@@ -1,24 +1,29 @@
 import { Head } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { PROJECT_STATUS_TEXT_MAP, PROJECT_STATUS_CLASS_MAP } from "@/constants";
-import clsx from "clsx";
 import TaskTable from "../Tasks/TaskTable";
 
 export default function Show({ auth, project, tasks, queryParams = null }) {
-    console.log(tasks);
+    console.log(project);
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title={`Project ${project.name}`} />
 
             <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-4">
+                <div className="max-w-4xl mx-auto sm:px-6 lg:px-4">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-400 bg-gray-800">
-                            <img
-                                className="w-full h-96"
-                                src={project.image_path}
-                                alt="fake image"
-                            />
+                            <div className="relative">
+                                <img
+                                    className="w-full h-96 object-cover"
+                                    src={project.image_path}
+                                    alt="fake image"
+                                />
+                                <img
+                                    className="absolute top-0 left-0 w-32 h-32 rounded-2xl"
+                                    src={project.logo_path}
+                                    alt=""
+                                />
+                            </div>
                             <div className="grid grid-cols-2 pt-10">
                                 <div className="space-y-4">
                                     <div>
@@ -35,39 +40,12 @@ export default function Show({ auth, project, tasks, queryParams = null }) {
                                     </div>
                                     <div>
                                         <label className="text-lg font-bold">
-                                            Project Status{"  "}
-                                        </label>
-                                        <span
-                                            className={clsx(
-                                                "px-3 p-1 text-white rounded-sm",
-                                                PROJECT_STATUS_CLASS_MAP[
-                                                    project.status
-                                                ]
-                                            )}
-                                        >
-                                            {
-                                                PROJECT_STATUS_TEXT_MAP[
-                                                    project.status
-                                                ]
-                                            }
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <label className="text-lg font-bold">
                                             Created By
                                         </label>
                                         <p>{project.created_by.name}</p>
                                     </div>
                                 </div>
                                 <div className="space-y-4">
-                                    <div>
-                                        <label className="text-lg font-bold">
-                                            Due Date
-                                        </label>
-                                        <p className="font-serif">
-                                            {project.due_date}
-                                        </p>
-                                    </div>
                                     <div>
                                         <label className="text-lg font-bold">
                                             Created Date

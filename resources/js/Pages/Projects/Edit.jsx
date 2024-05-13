@@ -1,7 +1,6 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import SecondaryButton from "@/Components/SecondaryButton";
-import SelectInput from "@/Components/SelectInput";
 import TextAreaInput from "@/Components/TextAreaInput";
 import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
@@ -98,65 +97,6 @@ export default function Create({ auth, project }) {
                                     />
                                     <InputError
                                         message={errors.name}
-                                        className="mt-2"
-                                    />
-                                </div>
-
-                                {/* Create a new Project from Due Date */}
-                                <div>
-                                    <InputLabel
-                                        htmlFor="due_date"
-                                        value="Project Due Date"
-                                    />
-
-                                    <TextInput
-                                        id="due_date"
-                                        name="due_date"
-                                        type="date"
-                                        placeholder="Project Due Date"
-                                        isFocused="true"
-                                        value={data.due_date}
-                                        className="mt-1 block text-gray-900 w-full"
-                                        onChange={(e) =>
-                                            setData("due_date", e.target.value)
-                                        }
-                                    />
-                                    <InputError
-                                        message={errors.due_date}
-                                        className="mt-2"
-                                    />
-                                </div>
-
-                                {/* Create a new Project from Status */}
-                                <div>
-                                    <InputLabel
-                                        htmlFor="status"
-                                        value="Project Status"
-                                    />
-
-                                    <SelectInput
-                                        id="status"
-                                        name="status"
-                                        type="text"
-                                        placeholder="Project Status"
-                                        isFocused="true"
-                                        value={data.status}
-                                        className="mt-1 block w-full py-2"
-                                        onChange={(e) =>
-                                            setData("status", e.target.value)
-                                        }
-                                    >
-                                        <option value="">Select Status</option>
-                                        <option value="pending">Pending</option>
-                                        <option value="in_progress">
-                                            In Progress
-                                        </option>
-                                        <option value="completed">
-                                            Completed
-                                        </option>
-                                    </SelectInput>
-                                    <InputError
-                                        message={errors.status}
                                         className="mt-2"
                                     />
                                 </div>

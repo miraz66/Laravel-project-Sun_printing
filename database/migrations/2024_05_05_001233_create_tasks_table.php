@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->longText('paragraph')->nullable();
-            $table->string('Address');
+            $table->string('address');
             $table->string('image_path');
             $table->foreignId('assigned_user_id')->constrained('users');
             $table ->foreignId('created_by')->constrained('users');

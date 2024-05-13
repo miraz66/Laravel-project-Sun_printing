@@ -16,6 +16,8 @@ export default function Create({ auth }) {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        console.log(data);
         post(route("project.store"));
     };
 
