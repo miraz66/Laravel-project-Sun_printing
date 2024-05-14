@@ -23,13 +23,6 @@ export default function Authenticated({ user, header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    Dashboard
-                                </NavLink>
-
-                                <NavLink
                                     href={route("project.index")}
                                     active={route().current("project.index")}
                                 >
@@ -41,6 +34,18 @@ export default function Authenticated({ user, header, children }) {
                                     active={route().current("task.index")}
                                 >
                                     All Tasks
+                                </NavLink>
+                                <NavLink
+                                    href={route("user.index")}
+                                    active={route().current("user.index")}
+                                >
+                                    Users
+                                </NavLink>
+                                <NavLink
+                                    href={route("task.myTasks")}
+                                    active={route().current("task.myTasks")}
+                                >
+                                    My Task
                                 </NavLink>
                             </div>
                         </div>

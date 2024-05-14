@@ -2,13 +2,12 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 
-Route::redirect('/', '/dashboard');
+Route::redirect('/', '/home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', fn() => Inertia::render('Dashboard'))->name('dashboard');
@@ -19,6 +18,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('task', TaskController::class);
     Route::resource('user', UserController::class);
 });
+
+Route::get('/home', function () {
+    return Inertia::render('Home/Index');
+})->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

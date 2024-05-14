@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Resources\ProjectResource;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
@@ -102,7 +103,26 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $data = $request->validated();
+
+        $data['updated_by'] = Auth::id();
+
+        // Check if there is a new image in the request
+        if ($request->hasFile('image')) {
+            // If there's an existing image, delete it
+            if ($task->image_path) {
+                Storage::disk('public')->deleteDirectory($task->image_path);
+            }
+
+            // Store the new image
+            $imagePath = $request->file('image')->store('task_images', 'public');
+            $data['image_path'] = $imagePath;
+        }
+
+        // Update the task with the new data
+        $task->update($data);
+
+        return to_route('task.index')->with('success', 'Task updated successfully');
     }
 
     /**
@@ -110,6 +130,32 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $name = $task->name;
+        $task->delete();
+
+        return to_route('task.index')->with('success', "Task \" $name \" was deleted");
+    }
+
+    public function myTasks()
+    {
+        $user = auth()->user();
+        $query = Task::query()->where("assigned_user_id", $user->id);
+        $sortField = request('sort_field', 'created_at');
+        $sortDirection = request('sort_direction', 'desc');
+
+        if (request('name')) {
+            $query->where('name', 'like', '%' . request('name') . '%');
+        }
+
+        if (request('status')) {
+            $query->where('status', request('status'));
+        }
+
+        $tasks = $query->orderBy($sortField, $sortDirection)->paginate(10)->onEachSide(1);
+
+        return inertia('Tasks/Index', [
+            'tasks' => TaskResource::collection($tasks),
+            'queryParams' => request()->query() ?: null,
+        ]);
     }
 }
