@@ -1,5 +1,13 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+
+function withOpacity(variableName) {
+    return ({ opacityValue }) => {
+      if (opacityValue !== undefined) {
+        return `rgba(var(${variableName}), ${opacityValue})`;
+      }
+      return `rgb(var(${variableName}))`;
+    };
+  }
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -14,10 +22,26 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
+                rubik: ["Rubik", "sans-serif"],
+                handle: ["Handlee", "sans-serif"],
+                playfair: ["Playfair Display", "serif"],
+                display: ["Montserrat", "sans-serif"],
+              },
+              backgroundColor: {
+                primary: withOpacity("--background-primary-color"),
+                secondary: withOpacity("--background-secondary-color"),
+                muted: withOpacity("--background-muted-color"),
+              },
+              textColor: {
+                primary_color: withOpacity("--text-primary-color"),
+                current_color: withOpacity("--text-current-color"),
+                secondary_color: withOpacity("--text-secondary-color"),
+                muted_color: withOpacity("--text-muted-color"),
+              },
         },
     },
 
-    plugins: [forms],
+    plugins: [
+      require('@tailwindcss/typography'),
+    ],
 };

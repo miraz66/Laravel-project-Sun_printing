@@ -2,7 +2,6 @@ import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, router } from "@inertiajs/react";
 import Pagination from "@/Components/Pagination";
-import clsx from "clsx";
 import TextInput from "@/Components/TextInput";
 import TableHeading from "@/Components/TableHeading";
 

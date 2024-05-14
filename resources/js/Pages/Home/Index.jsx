@@ -6,12 +6,14 @@
 // import HeroSection from "../components/HeroSection";
 // import ServicesHome from "../components/ServicesHome";
 import Navbar from "@/Components/Navbar";
+import { Head } from "@inertiajs/react";
 // import TailUsProject from "../components/TailUsProject";
 // import WhatsAppWidget from "../components/WhatsAppWidget";
 
 export default function Home() {
     return (
         <div className="bg-white">
+            <Head title="Home" />
             <Navbar />
             {/* <HeroSection />
       <AboutHome />
