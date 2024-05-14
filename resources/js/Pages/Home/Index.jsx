@@ -12,7 +12,7 @@ import { Head } from "@inertiajs/react";
 
 export default function Home() {
     return (
-        <div className="bg-white">
+        <div className="bg-white font-display">
             <Head title="Home" />
             <Navbar />
             {/* <HeroSection />

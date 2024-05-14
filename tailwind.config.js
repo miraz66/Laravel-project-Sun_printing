@@ -1,4 +1,5 @@
 import forms from '@tailwindcss/forms';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 function withOpacity(variableName) {
     return ({ opacityValue }) => {
@@ -26,6 +27,7 @@ export default {
                 handle: ["Handlee", "sans-serif"],
                 playfair: ["Playfair Display", "serif"],
                 display: ["Montserrat", "sans-serif"],
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
               },
               backgroundColor: {
                 primary: withOpacity("--background-primary-color"),
@@ -42,6 +44,6 @@ export default {
     },
 
     plugins: [
-      require('@tailwindcss/typography'),
+       forms
     ],
 };

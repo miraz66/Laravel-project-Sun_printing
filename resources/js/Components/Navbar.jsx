@@ -7,10 +7,10 @@ function classNames(...classes) {
 }
 
 const navigation = [
-    { name: "Dashboard", href: "#", id: 1 },
-    { name: "Team", href: "#", id: 2 },
-    { name: "Projects", href: "#", id: 3 },
-    { name: "Calendar", href: "#", id: 4 },
+    { name: "Home", href: "#", id: 1 },
+    { name: "About", href: "#", id: 2 },
+    { name: "Services", href: "#", id: 3 },
+    { name: "Owner", href: "#", id: 4 },
     { name: "Contact", href: "#", id: 5 },
 ];
 
@@ -55,7 +55,9 @@ export default function Example() {
                                         alt="Your Company"
                                     />
 
-                                    <h1>Sun Printing Press</h1>
+                                    <h1 className="text-xl sm:text-3xl text-neutral-600 md:text-4xl font-serif tracking-wide font-semibold">
+                                        Sun Printing Press
+                                    </h1>
                                 </div>
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
@@ -72,9 +74,9 @@ export default function Example() {
                                                     }
                                                     className={classNames(
                                                         item.id === active
-                                                            ? "bg-primary text-gray-600"
-                                                            : "text-gray-900 hover:bg-amber-200 hover:text-gray-900",
-                                                        "block rounded-md px-4 py-2 text-sm tracking-wide font-medium"
+                                                            ? "bg-primary text-gray-700"
+                                                            : "text-gray-600 hover:bg-amber-200 hover:text-gray-900",
+                                                        "block rounded-md px-4 py-2 text-base tracking-wide font-medium"
                                                     )}
                                                     aria-current={
                                                         item.id === active
@@ -89,7 +91,7 @@ export default function Example() {
                                     })}
                                 </div>
                             </div>
-                            <button className="ml-10 rounded-md px-4 py-2 text-sm font-medium bg-gray-800 text-white hidden sm:ml-6 sm:block">
+                            <button className="ml-5 relative hidden md:block tracking-wide rounded-full text-white px-6 py-2 bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                 Contact
                             </button>
                         </div>
