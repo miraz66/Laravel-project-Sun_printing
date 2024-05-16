@@ -4,23 +4,28 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { BiChevronDown } from "react-icons/bi";
 import { Link, usePage } from "@inertiajs/react";
 import clsx from "clsx";
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-}
-
-const navigation = [
-    { name: "Home", open: "/home", href: "public.home", id: 1 },
-    { name: "About", open: "/about", href: "public.about", id: 2 },
-    { name: "Services", open: "/services", href: "public.services", id: 3 },
-    { name: "Contact", open: "/contact", href: "public.contact", id: 5 },
-];
+import HoverDropdown from "./HoverDropdown";
 
 export default function Example() {
     const { url } = usePage();
-    const [toggleOpen, setToggleOpen] = useState(false);
+    const [ownerLink, setOwnerLink] = useState(null);
 
-    console.log(toggleOpen);
+    const navigation = [
+        { name: "Home", active: "/home", href: "public.home", id: 1 },
+        { name: "About", active: "/about", href: "public.about", id: 2 },
+        {
+            name: "Services",
+            active: "/services",
+            href: "public.services",
+            id: 3,
+        },
+        {
+            name: <HoverDropdown setBlogLink={setOwnerLink} />,
+            active: "/owner",
+            href: "public.owner",
+            id: 5,
+        },
+    ];
 
     return (
         <Disclosure
@@ -66,47 +71,20 @@ export default function Example() {
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
                                 <div className="flex space-x-4 relative">
-                                    {navigation.map((item) => {
-                                        if (item.id <= 3) {
-                                            return (
-                                                <Link
-                                                    key={item.name}
-                                                    href={route(item.href)}
-                                                    as="a"
-                                                    onClick={() =>
-                                                        setToggleOpen(true)
-                                                    }
-                                                    className={clsx(
-                                                        "rounded-md px-5 py-2 text-base font-medium",
-                                                        item.open === url
-                                                            ? "bg-primary text-gray-700"
-                                                            : "text-gray-600 hover:bg-muted hover:text-black"
-                                                    )}
-                                                    aria-current={
-                                                        item.open === url
-                                                            ? "page"
-                                                            : undefined
-                                                    }
-                                                >
-                                                    <div className="flex">
-                                                        {item.name}
-                                                        {item.id === 4 ? (
-                                                            <BiChevronDown className="h-6 w-6" />
-                                                        ) : null}
-                                                    </div>
-                                                </Link>
-                                            );
-                                        }
-
-                                        // toggle button
-                                        if (url === "/owner") {
-                                            return (
-                                                <div className="absolute right-0 top-16 h-40 w-52 bg-gray-300">
-                                                    hello
-                                                </div>
-                                            );
-                                        }
-                                    })}
+                                    {navigation.map((item) => (
+                                        <Link
+                                            key={item.id}
+                                            href={route(item.href)}
+                                            className={clsx(
+                                                "rounded-md px-5 py-2 text-base font-medium",
+                                                item.active === url
+                                                    ? "bg-primary text-gray-700"
+                                                    : "text-gray-600 hover:bg-muted hover:text-black"
+                                            )}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    ))}
                                 </div>
                             </div>
                             <Link

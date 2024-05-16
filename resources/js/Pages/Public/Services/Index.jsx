@@ -1,21 +1,27 @@
 import { Head } from "@inertiajs/react";
 import Navbar from "@/Components/Navbar";
 
+import HeroServices from "./HeroServices";
+import TopServices from "./TopServices";
+import RecentProject from "./RecentProject";
+import TailUsProject from "../Home/TailUsProject";
+import Sponsors from "../Home/Sponsors";
+import Footer from "@/Components/Footer";
+import WhatsAppWidget from "@/Components/WhatsAppWidget";
+
 export default function Index() {
     return (
         <div className="">
             <Head title="Services" />
+
             <Navbar />
-            <div className="">Services</div>
-            {/* <HeroSection />
-            <AboutHome />
-            <Blog />
-            <ServicesHome />
-            <Award />
-            <Faq />
-            <TailUsProject className="mx-5 mt-40 sm:mx-10 xl:mx-0" />
+            <HeroServices />
+            <TopServices />
+            <RecentProject />
+            <Sponsors className="bg-gray-100 py-40" />
+            <TailUsProject className="bg-white pt-40" />
             <Footer />
-            <WhatsAppWidget /> */}
+            <WhatsAppWidget />
         </div>
     );
 }

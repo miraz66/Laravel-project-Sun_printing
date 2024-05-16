@@ -1,18 +1,18 @@
-import Sponsors from "../Pages/Public/Home/Sponsors";
+import Sponsors from "../Home/Sponsors";
 
 // Employee images Here
-import leaderImg_1 from "../assets/EmployeeImages/leslie-alexander1.jpg";
-import leaderImg_2 from "../assets/EmployeeImages/michael-foster2.jpg";
-import leaderImg_3 from "../assets/EmployeeImages/dries-vincent3.jpg";
-import TeamMemberImg_1 from "../assets/EmployeeImages/chelsea-hagon4.jpg";
-import TeamMemberImg_2 from "../assets/EmployeeImages/emma-dorsey5.jpg";
-import TeamMemberImg_3 from "../assets/EmployeeImages/leonard-krasner6.jpg";
-import TeamMemberImg_4 from "../assets/EmployeeImages/blake-reid7.jpg";
-import TeamMemberImg_5 from "../assets/EmployeeImages/kathryn-murphy8.jpg";
-import TeamMemberImg_6 from "../assets/EmployeeImages/whitney-francis9.jpg";
-import TeamMemberImg_7 from "../assets/EmployeeImages/jeffrey-webb10.jpg";
-import TeamMemberImg_8 from "../assets/EmployeeImages/benjamin-russel11.jpg";
-import TeamMemberImg_9 from "../assets/EmployeeImages/angela-fisher12.jpg";
+import leaderImg_1 from "@/Assets/EmployeeImages/leslie-alexander1.jpg";
+import leaderImg_2 from "@/Assets/EmployeeImages/michael-foster2.jpg";
+import leaderImg_3 from "@/Assets/EmployeeImages/dries-vincent3.jpg";
+import TeamMemberImg_1 from "@/Assets/EmployeeImages/chelsea-hagon4.jpg";
+import TeamMemberImg_2 from "@/Assets/EmployeeImages/emma-dorsey5.jpg";
+import TeamMemberImg_3 from "@/Assets/EmployeeImages/leonard-krasner6.jpg";
+import TeamMemberImg_4 from "@/Assets/EmployeeImages/blake-reid7.jpg";
+import TeamMemberImg_5 from "@/Assets/EmployeeImages/kathryn-murphy8.jpg";
+import TeamMemberImg_6 from "@/Assets/EmployeeImages/whitney-francis9.jpg";
+import TeamMemberImg_7 from "@/Assets/EmployeeImages/jeffrey-webb10.jpg";
+import TeamMemberImg_8 from "@/Assets/EmployeeImages/benjamin-russel11.jpg";
+import TeamMemberImg_9 from "@/Assets/EmployeeImages/angela-fisher12.jpg";
 
 const data = {
     leadership: [

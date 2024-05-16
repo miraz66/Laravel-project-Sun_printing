@@ -1,20 +1,20 @@
 import { Head } from "@inertiajs/react";
 import Navbar from "@/Components/Navbar";
+import HeroAbout from "./HeroAbout";
+import Employee from "./Employee";
+import Footer from "@/Components/Footer";
+import WhatsAppWidget from "@/Components/WhatsAppWidget";
 
 export default function Index(options) {
     return (
         <div className="">
             <Head title="About" />
+
             <Navbar />
-            {/* <HeroSection />
-            <AboutHome />
-            <Blog />
-            <ServicesHome />
-            <Award />
-            <Faq />
-            <TailUsProject className="mx-5 mt-40 sm:mx-10 xl:mx-0" />
+            <HeroAbout />
+            <Employee />
             <Footer />
-            <WhatsAppWidget /> */}
+            <WhatsAppWidget />
         </div>
     );
 }
