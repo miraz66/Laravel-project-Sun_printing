@@ -1,28 +1,32 @@
 import { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { BiChevronDown } from "react-icons/bi";
+import { Link, usePage } from "@inertiajs/react";
+import clsx from "clsx";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
 const navigation = [
-    { name: "Home", href: "#", id: 1 },
-    { name: "About", href: "#", id: 2 },
-    { name: "Services", href: "#", id: 3 },
-    { name: "Owner", href: "#", id: 4 },
-    { name: "Contact", href: "#", id: 5 },
+    { name: "Home", open: "/home", href: "public.home", id: 1 },
+    { name: "About", open: "/about", href: "public.about", id: 2 },
+    { name: "Services", open: "/services", href: "public.services", id: 3 },
+    { name: "Contact", open: "/contact", href: "public.contact", id: 5 },
 ];
 
 export default function Example() {
-    const [active, setActive] = useState(1);
+    const { url } = usePage();
+    const [toggleOpen, setToggleOpen] = useState(false);
 
-    const handleSetActive = (id) => {
-        setActive(id); // Set active button id
-    };
+    console.log(toggleOpen);
 
     return (
-        <Disclosure as="nav" className="bg-gray-100">
+        <Disclosure
+            as="nav"
+            className="bg-gray-100 fixed w-full z-50 bg-opacity-90"
+        >
             {({ open }) => (
                 <>
                     <div className="lg:mx-5 xl:mx-auto max-w-7xl px-2 sm:px-6 lg:px-0 py-1">
@@ -61,62 +65,80 @@ export default function Example() {
                                 </div>
                             </div>
                             <div className="hidden sm:ml-6 sm:block">
-                                <div className="flex space-x-4">
+                                <div className="flex space-x-4 relative">
                                     {navigation.map((item) => {
-                                        if (item.id <= 4) {
+                                        if (item.id <= 3) {
                                             return (
-                                                <Disclosure.Button
+                                                <Link
                                                     key={item.name}
+                                                    href={route(item.href)}
                                                     as="a"
-                                                    href={item.href}
                                                     onClick={() =>
-                                                        handleSetActive(item.id)
+                                                        setToggleOpen(true)
                                                     }
-                                                    className={classNames(
-                                                        item.id === active
+                                                    className={clsx(
+                                                        "rounded-md px-5 py-2 text-base font-medium",
+                                                        item.open === url
                                                             ? "bg-primary text-gray-700"
-                                                            : "text-gray-600 hover:bg-amber-200 hover:text-gray-900",
-                                                        "block rounded-md px-4 py-2 text-base tracking-wide font-medium"
+                                                            : "text-gray-600 hover:bg-muted hover:text-black"
                                                     )}
                                                     aria-current={
-                                                        item.id === active
+                                                        item.open === url
                                                             ? "page"
                                                             : undefined
                                                     }
                                                 >
-                                                    {item.name}
-                                                </Disclosure.Button>
+                                                    <div className="flex">
+                                                        {item.name}
+                                                        {item.id === 4 ? (
+                                                            <BiChevronDown className="h-6 w-6" />
+                                                        ) : null}
+                                                    </div>
+                                                </Link>
+                                            );
+                                        }
+
+                                        // toggle button
+                                        if (url === "/owner") {
+                                            return (
+                                                <div className="absolute right-0 top-16 h-40 w-52 bg-gray-300">
+                                                    hello
+                                                </div>
                                             );
                                         }
                                     })}
                                 </div>
                             </div>
-                            <button className="ml-5 relative hidden md:block tracking-wide rounded-full text-white px-6 py-2 bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <Link
+                                href={route("public.contact")}
+                                className="ml-5 relative hidden md:block tracking-wide rounded-full text-white px-6 py-2 bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            >
                                 Contact
-                            </button>
+                            </Link>
                         </div>
                     </div>
 
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
                             {navigation.map((item) => (
-                                <Disclosure.Button
+                                <Link
                                     key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    onClick={() => handleSetActive(item.id)}
-                                    className={classNames(
-                                        item.id === active
+                                    href={route(item.href)}
+                                    className={clsx(
+                                        "block rounded-md px-3 py-2 text-base font-medium",
+                                        item.open === url
                                             ? "bg-gray-900 text-white"
-                                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                                        "block rounded-md px-3 py-2 text-base font-medium"
+                                            : "text-gray-300 hover:bg-gray-700 hover:text-white"
                                     )}
                                     aria-current={
-                                        item.id === active ? "page" : undefined
+                                        item.open === url ? "page" : undefined
                                     }
                                 >
                                     {item.name}
-                                </Disclosure.Button>
+                                    {item.id === 4 ? (
+                                        <BiChevronDown className="h-6 w-6" />
+                                    ) : null}
+                                </Link>
                             ))}
                         </div>
                     </Disclosure.Panel>

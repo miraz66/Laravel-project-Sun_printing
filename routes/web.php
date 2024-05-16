@@ -6,6 +6,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PublicProjectController;
 
 Route::redirect('/', '/home');
 
@@ -19,9 +20,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('user', UserController::class);
 });
 
-Route::get('/home', function () {
-    return Inertia::render('Home/Index');
-})->name('home');
+//Public routes
+Route::get('/home', [PublicProjectController::class, 'home'])->name('public.home');
+Route::get('/about', [PublicProjectController::class, 'about'])->name('public.about');
+Route::get('/services', [PublicProjectController::class, 'services'])->name('public.services');
+Route::get('/owner', [PublicProjectController::class, 'owner'])->name('public.owner');
+Route::get('/contact', [PublicProjectController::class, 'contact'])->name('public.contact');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
