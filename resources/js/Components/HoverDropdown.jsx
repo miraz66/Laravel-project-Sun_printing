@@ -10,7 +10,7 @@ const menu = [
     "Md.Mozzamel huque sritisoggo",
 ];
 
-export default function HoverDropdown({ setBlogLink, projectName }) {
+export default function HoverDropdown({ setOwnerID, projectName }) {
     const [open, setOpen] = useState(false);
 
     return (
@@ -32,7 +32,8 @@ export default function HoverDropdown({ setBlogLink, projectName }) {
                     {projectName.data.map((item, index) => (
                         <Link
                             key={index}
-                            // href={route("public.blog")}
+                            href={"/owner/" + item.id}
+                            onClick={() => setOwnerID(item.id)}
                             className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                         >
                             {item.name}

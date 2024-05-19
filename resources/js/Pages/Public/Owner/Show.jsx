@@ -2,15 +2,23 @@ import { Head, Link } from "@inertiajs/react";
 import clsx from "clsx";
 import { useState } from "react";
 import SportingBlog from "./SportingBlog";
+import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 
-export default function Show({ project, tasks }) {
+export default function Show({ project, tasks, projectName }) {
     const [readMore, setReadMore] = useState(true);
 
     return (
         <>
             <Head title={`Task ${project.name}`} />
+            <Navbar project={projectName} />
 
-            <div className="bg-no-repeat bg-cover bg-center bg-[url('./assets/jeffrey-f-lin-6k0VD3xNw6U-unsplash.jpg')]">
+            <div
+                className="bg-no-repeat bg-cover bg-center "
+                style={{
+                    backgroundImage: `url(${project.image_path})`,
+                }}
+            >
                 <div className="bg-gray-900 pt-48 lg:pt-60 xl:pt-72 pb-24 md:pb-40 bg-opacity-65">
                     <div className="max-w-7xl mx-auto px-5">
                         <div>
@@ -148,6 +156,8 @@ export default function Show({ project, tasks }) {
                     <SportingBlog {...data} key={i} />
                 ))}
             </div>
+
+            <Footer />
         </>
     );
 }

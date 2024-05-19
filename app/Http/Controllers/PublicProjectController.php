@@ -67,6 +67,7 @@ class PublicProjectController extends Controller
             'project' => new ProjectResource($owner),
             'tasks' => TaskResource::collection($tasks),
             'queryParams' => request()->query() ?: null,
+            'projectName' => ProjectResource::collection($this->project)
         ]);
     }
 

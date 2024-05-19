@@ -8,7 +8,9 @@ import HoverDropdown from "./HoverDropdown";
 
 export default function Navbar({ project }) {
     const { url } = usePage();
-    const [ownerLink, setOwnerLink] = useState(null);
+    const [ownerID, setOwnerID] = useState(null);
+
+    console.log(ownerID);
 
     const navigation = [
         { name: "Home", active: "/home", href: "public.home", id: 1 },
@@ -21,13 +23,10 @@ export default function Navbar({ project }) {
         },
         {
             name: (
-                <HoverDropdown
-                    setBlogLink={setOwnerLink}
-                    projectName={project}
-                />
+                <HoverDropdown setOwnerID={setOwnerID} projectName={project} />
             ),
-            active: "/owner",
-            href: "public.owner",
+            active: "/owner" + ownerID,
+            href: "",
             id: 4,
         },
     ];
@@ -79,7 +78,11 @@ export default function Navbar({ project }) {
                                     {navigation.map((item) => (
                                         <Link
                                             key={item.id}
-                                            href={route(item.href)}
+                                            href={
+                                                item.href
+                                                    ? route(item.href)
+                                                    : null
+                                            }
                                             className={clsx(
                                                 "rounded-md px-5 py-2 text-base font-medium",
                                                 item.active === url
