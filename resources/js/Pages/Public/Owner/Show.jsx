@@ -159,7 +159,7 @@ export default function Show({ project, tasks, projectName }) {
             </div>
 
             <ScrollTopToButton />
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
