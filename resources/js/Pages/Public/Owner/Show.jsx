@@ -11,7 +11,7 @@ export default function Show({ project, tasks, projectName }) {
 
     return (
         <>
-            {/* <Head title={`Task ${project.name}`} /> */}
+            <Head title={`Task ${project.name}`} />
             {/* <Navbar project={projectName} /> */}
 
             <div
