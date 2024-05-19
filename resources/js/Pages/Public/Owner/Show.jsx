@@ -4,14 +4,15 @@ import { useState } from "react";
 import SportingBlog from "./SportingBlog";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import ScrollTopToButton from "@/Components/ScrollTopToButton";
 
 export default function Show({ project, tasks, projectName }) {
     const [readMore, setReadMore] = useState(true);
 
     return (
         <>
-            <Head title={`Task ${project.name}`} />
-            <Navbar project={projectName} />
+            {/* <Head title={`Task ${project.name}`} /> */}
+            {/* <Navbar project={projectName} /> */}
 
             <div
                 className="bg-no-repeat bg-cover bg-center "
@@ -157,7 +158,8 @@ export default function Show({ project, tasks, projectName }) {
                 ))}
             </div>
 
-            <Footer />
+            {/* <ScrollTopToButton /> */}
+            {/* <Footer /> */}
         </>
     );
 }

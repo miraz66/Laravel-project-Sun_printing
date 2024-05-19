@@ -7,7 +7,7 @@ import WhatsAppWidget from "@/Components/WhatsAppWidget";
 
 export default function Index({ project }) {
     return (
-        <div className="">
+        <>
             <Head title="About" />
 
             <Navbar project={project} />
@@ -15,6 +15,6 @@ export default function Index({ project }) {
             <Employee />
             <Footer />
             <WhatsAppWidget />
-        </div>
+        </>
     );
 }

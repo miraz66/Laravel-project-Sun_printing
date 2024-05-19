@@ -11,7 +11,7 @@ import WhatsAppWidget from "@/Components/WhatsAppWidget";
 
 export default function Index({ project }) {
     return (
-        <div className="">
+        <>
             <Head title="Services" />
 
             <Navbar project={project} />
@@ -22,6 +22,6 @@ export default function Index({ project }) {
             <TailUsProject className="bg-white pt-40" />
             <Footer />
             <WhatsAppWidget />
-        </div>
+        </>
     );
 }

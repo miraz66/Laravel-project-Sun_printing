@@ -3,7 +3,7 @@ import Navbar from "@/Components/Navbar";
 
 export default function Index({ project }) {
     return (
-        <div className="">
+        <div>
             <Head title="Owner" />
             <Navbar project={project} />
         </div>
