@@ -9,12 +9,12 @@ import Sponsors from "../Home/Sponsors";
 import Footer from "@/Components/Footer";
 import WhatsAppWidget from "@/Components/WhatsAppWidget";
 
-export default function Index() {
+export default function Index({ project }) {
     return (
         <div className="">
             <Head title="Services" />
 
-            <Navbar />
+            <Navbar project={project} />
             <HeroServices />
             <TopServices />
             <RecentProject />

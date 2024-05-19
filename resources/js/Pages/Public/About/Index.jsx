@@ -5,12 +5,12 @@ import Employee from "./Employee";
 import Footer from "@/Components/Footer";
 import WhatsAppWidget from "@/Components/WhatsAppWidget";
 
-export default function Index(options) {
+export default function Index({ project }) {
     return (
         <div className="">
             <Head title="About" />
 
-            <Navbar />
+            <Navbar project={project} />
             <HeroAbout />
             <Employee />
             <Footer />

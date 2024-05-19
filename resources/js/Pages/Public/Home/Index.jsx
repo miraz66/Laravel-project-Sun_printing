@@ -11,12 +11,12 @@ import Footer from "@/Components/Footer";
 import WhatsAppWidget from "@/Components/WhatsAppWidget";
 // import DropdownMenu from "@/Components/DropdownMenu";
 
-export default function Index() {
+export default function Index({ project }) {
     return (
         <div className="bg-white font-display">
             <Head title="Home" />
 
-            <Navbar />
+            <Navbar project={project} />
             <HeroSection />
             <AboutHome />
             <Blog />

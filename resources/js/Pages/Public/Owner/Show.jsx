@@ -1,30 +1,33 @@
+import { Head, Link } from "@inertiajs/react";
 import clsx from "clsx";
 import { useState } from "react";
-import SportingBlog from "../Pages/Public/Owner/SportingBlog";
-import { Data } from "../Assets/SportingData/YaungSunData";
-import Footer from "../components/Footer";
+import SportingBlog from "./SportingBlog";
 
-import Logo from "../assets/20827070_6345260-removebg-preview.png";
-
-export default function MozzamelHuqueSritisoggo() {
+export default function Show({ project, tasks }) {
     const [readMore, setReadMore] = useState(true);
 
     return (
         <>
-            <div className="bg-no-repeat bg-cover bg-center bg-[url('./assets/jigar-panchal-711byojMaQ0-unsplash.jpg')]">
-                <div className="bg-gray-900 pt-48 md:pt-60 lg:pt-72 pb-28 md:pb-40 bg-opacity-65">
+            <Head title={`Task ${project.name}`} />
+
+            <div className="bg-no-repeat bg-cover bg-center bg-[url('./assets/jeffrey-f-lin-6k0VD3xNw6U-unsplash.jpg')]">
+                <div className="bg-gray-900 pt-48 lg:pt-60 xl:pt-72 pb-24 md:pb-40 bg-opacity-65">
                     <div className="max-w-7xl mx-auto px-5">
                         <div>
                             <h1 className="flex gap-5 items-center">
-                                <img className="h-20 w-20" src={Logo} alt="" />
+                                <img
+                                    className="h-20 w-20"
+                                    src={project.logo_path}
+                                    alt=""
+                                />
                                 <span className="sr-only"> - </span>
                                 <span className="mt-4 block max-w-7xl text-4xl sm:text-7xl font-playfair font-semibold tracking-wide text-white [text-wrap:balance]">
-                                    Md.Mozzamel Huque Sriti soggo
+                                    {project.name}
                                 </span>
                             </h1>
                             <div
                                 className={clsx(
-                                    "pt-20 max-w-5xl text text-xl space-y-8 text-gray-50 leading-8",
+                                    "pt-20 max-w-5xl text-xl space-y-8 tracking-wide text-gray-50 leading-8",
                                     readMore
                                         ? "line-clamp-6"
                                         : "line-clamp-none"
@@ -140,13 +143,11 @@ export default function MozzamelHuqueSritisoggo() {
                 </div>
             </div>
 
-            <div className="bg-white py-40 space-y-24 md:space-y-40">
-                {Data.map((data, i) => (
+            <div className="bg-white py- md:py-40 space-y-40">
+                {tasks.data.map((data, i) => (
                     <SportingBlog {...data} key={i} />
                 ))}
             </div>
-
-            <Footer />
         </>
     );
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { Data } from "../Assets/SportingData/YaungSunData";
 import Footer from "../components/Footer";
-import SportingBlog from "./SportingBlog";
+import SportingBlog from "../Pages/Public/Owner/SportingBlog";
 import Logo from "../assets/20827070_6345260-removebg-preview.png";
 
 export default function SunFootballAcademy() {

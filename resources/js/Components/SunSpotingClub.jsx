@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { useState } from "react";
 import Logo from "../assets/20827070_6345260-removebg-preview.png";
-import SportingBlog from "./SportingBlog";
+import SportingBlog from "../Pages/Public/Owner/SportingBlog";
 import { Data } from "../Assets/SportingData/YaungSunData";
 import Footer from "../components/Footer";
 

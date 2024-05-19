@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { BiChevronDown } from "react-icons/bi";
@@ -6,7 +6,7 @@ import { Link, usePage } from "@inertiajs/react";
 import clsx from "clsx";
 import HoverDropdown from "./HoverDropdown";
 
-export default function Example() {
+export default function Navbar({ project }) {
     const { url } = usePage();
     const [ownerLink, setOwnerLink] = useState(null);
 
@@ -20,10 +20,15 @@ export default function Example() {
             id: 3,
         },
         {
-            name: <HoverDropdown setBlogLink={setOwnerLink} />,
+            name: (
+                <HoverDropdown
+                    setBlogLink={setOwnerLink}
+                    projectName={project}
+                />
+            ),
             active: "/owner",
             href: "public.owner",
-            id: 5,
+            id: 4,
         },
     ];
 

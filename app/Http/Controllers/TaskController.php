@@ -77,7 +77,9 @@ class TaskController extends Controller
      * Display the specified resource.
      */
     public function show(Task $task)
+
     {
+        dd($task);
         return inertia('Tasks/Show', [
             'task' => new TaskResource($task),  
         ]);

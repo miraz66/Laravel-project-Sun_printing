@@ -1,11 +1,12 @@
 import { Head } from "@inertiajs/react";
 import Navbar from "@/Components/Navbar";
 
-export default function Index() {
+export default function Index({ project }) {
     return (
-        <div className="">
+        <>
             <Head title="contact" />
-            <Navbar />
+            <Navbar project={project} />
+
             <div className="">Contact</div>
             {/* <HeroSection />
             <AboutHome />
@@ -16,6 +17,6 @@ export default function Index() {
             <TailUsProject className="mx-5 mt-40 sm:mx-10 xl:mx-0" />
             <Footer />
             <WhatsAppWidget /> */}
-        </div>
+        </>
     );
 }

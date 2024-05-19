@@ -22,7 +22,7 @@ class TaskResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'paragraph' => $this->paragraph,
-            'address' => $this->address,
+            'address' => $this->Address,
             'created_at' => (new Carbon($this->created_at))->format('Y-m-d'),
             'image_path' => $this->image_path ? Storage::url($this->image_path) : null,
             'assignedUsers' => $this->assigned_users ? new UserResource($this->assigned_users) : null,

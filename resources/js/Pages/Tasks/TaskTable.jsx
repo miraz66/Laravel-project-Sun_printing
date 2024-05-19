@@ -50,6 +50,8 @@ export default function TaskTable({
         router.delete(route("task.destroy", id));
     };
 
+    console.log(tasks);
+
     return (
         <>
             <div className="overflow-auto">
@@ -84,6 +86,9 @@ export default function TaskTable({
                                 sortChanged={sortChange}
                             >
                                 name
+                            </TableHeading>
+                            <TableHeading name={"image"} sortable={false}>
+                                Address
                             </TableHeading>
 
                             <TableHeading
@@ -127,6 +132,7 @@ export default function TaskTable({
                             <th className="px-3 py-4"></th>
                             <th className="px-3 py-4"></th>
                             <th className="px-3 py-4"></th>
+                            <th className="px-3 py-4"></th>
                         </tr>
                     </thead>
 
@@ -160,6 +166,7 @@ export default function TaskTable({
                                     </td>
                                 )}
 
+                                <td className="px-3 py-2">{task.address}</td>
                                 <td className="px-3 py-2">{task.created_at}</td>
 
                                 <td className="px-3 py-2">

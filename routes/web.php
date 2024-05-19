@@ -25,6 +25,9 @@ Route::get('/home', [PublicProjectController::class, 'home'])->name('public.home
 Route::get('/about', [PublicProjectController::class, 'about'])->name('public.about');
 Route::get('/services', [PublicProjectController::class, 'services'])->name('public.services');
 Route::get('/owner', [PublicProjectController::class, 'owner'])->name('public.owner');
+Route::get('owner/{owner}', [PublicProjectController::class, 'show'])->name('public.show');
+
+// Route::get('/owner/sunSportingClub', [PublicProjectController::class, 'sunSportingClub'])->name('public.sunSportingClub');
 Route::get('/contact', [PublicProjectController::class, 'contact'])->name('public.contact');
 
 Route::middleware('auth')->group(function () {
