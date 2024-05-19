@@ -12,7 +12,7 @@ export default function Show({ project, tasks, projectName }) {
     return (
         <>
             <Head title={`Task ${project.name}`} />
-            {/* <Navbar project={projectName} /> */}
+            <Navbar project={projectName} />
 
             <div
                 className="bg-no-repeat bg-cover bg-center "
