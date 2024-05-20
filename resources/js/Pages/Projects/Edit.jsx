@@ -9,10 +9,10 @@ import { Head, useForm, Link } from "@inertiajs/react";
 export default function Create({ auth, project }) {
     const { data, setData, post, errors, reset } = useForm({
         image: "",
+        logo: "",
         image_path: project.image_path || "",
+        logo_path: project.logo_path || "",
         name: project.name || "",
-        status: project.status || "",
-        due_date: project.due_date || "",
         description: project.description || "",
         _method: "PUT",
     });
@@ -22,6 +22,8 @@ export default function Create({ auth, project }) {
 
         post(route("project.update", project.id));
     };
+
+    console.log(project);
 
     return (
         <AuthenticatedLayout
@@ -43,6 +45,38 @@ export default function Create({ auth, project }) {
                                 Edit Your Project.
                             </h1>
                             <form className="space-y-6" onSubmit={onSubmit}>
+                                {/*  Create a new project from Logo */}
+                                <div>
+                                    <InputLabel
+                                        className="text-white text-lg font-medium"
+                                        htmlFor="project_logo_path"
+                                        value="Project Logo"
+                                    />
+
+                                    <TextInput
+                                        id="project_logo_path"
+                                        name="logo"
+                                        type="file"
+                                        isFocused="true"
+                                        className="mt-1 py-1.5 px-2 block w-full bg-gray-400 border-black"
+                                        onChange={(e) =>
+                                            setData("logo", e.target.files[0])
+                                        }
+                                    />
+                                    <InputError
+                                        message={errors.logo}
+                                        className="mt-2"
+                                    />
+
+                                    {data.logo_path && (
+                                        <img
+                                            className="w-20 m-4"
+                                            src={data.logo_path}
+                                            alt="edit logo"
+                                        />
+                                    )}
+                                </div>
+
                                 {/*  Create a new project from image */}
                                 <div>
                                     <InputLabel

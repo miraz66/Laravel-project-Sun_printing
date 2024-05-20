@@ -130,6 +130,18 @@ class ProjectController extends Controller
             $data['image_path'] = $imagePath;
         }
 
+        // Check if there is a new image in the request
+        if ($request->hasFile('logo')) {
+            // If there's an existing image, delete it
+            if ($project->logo_path) {
+                Storage::disk('public')->deleteDirectory($project->logo_path);
+            }
+
+            // Store the new image
+            $logoPath = $request->file('logo')->store('project_logos', 'public');
+            $data['logo_path'] = $logoPath;
+        }
+
         // Update the project with the new data
         $project->update($data);
 
